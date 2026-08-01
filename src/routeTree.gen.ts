@@ -24,6 +24,8 @@ import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAppSplatRouteImport } from './routes/_authenticated/app.$'
 import { Route as AuthenticatedDisciplineIndexRouteImport } from './routes/_authenticated/discipline/index'
 import { Route as AuthenticatedDisciplineAnalyticsRouteImport } from './routes/_authenticated/discipline/analytics'
+import { Route as AuthenticatedMedicalIndexRouteImport } from './routes/_authenticated/medical/index'
+import { Route as AuthenticatedMedicalStudentIdRouteImport } from './routes/_authenticated/medical/$studentId'
 import { Route as AuthenticatedTeachIndexRouteImport } from './routes/_authenticated/teach/index'
 import { Route as AuthenticatedTeachCsIdRouteImport } from './routes/_authenticated/teach/$csId'
 
@@ -110,6 +112,18 @@ const AuthenticatedDisciplineAnalyticsRoute =
     path: '/discipline/analytics',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedMedicalIndexRoute =
+  AuthenticatedMedicalIndexRouteImport.update({
+    id: '/medical/',
+    path: '/medical/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMedicalStudentIdRoute =
+  AuthenticatedMedicalStudentIdRouteImport.update({
+    id: '/medical/$studentId',
+    path: '/medical/$studentId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedTeachIndexRoute = AuthenticatedTeachIndexRouteImport.update({
   id: '/teach/',
   path: '/teach/',
@@ -135,8 +149,10 @@ export interface FileRoutesByFullPath {
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
   '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/medical/': typeof AuthenticatedMedicalIndexRoute
   '/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesByTo {
@@ -153,8 +169,10 @@ export interface FileRoutesByTo {
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
   '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline': typeof AuthenticatedDisciplineIndexRoute
+  '/medical': typeof AuthenticatedMedicalIndexRoute
   '/teach': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesById {
@@ -173,8 +191,10 @@ export interface FileRoutesById {
   '/_authenticated/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/_authenticated/app/$': typeof AuthenticatedAppSplatRoute
   '/_authenticated/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/_authenticated/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
   '/_authenticated/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/_authenticated/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/_authenticated/medical/': typeof AuthenticatedMedicalIndexRoute
   '/_authenticated/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRouteTypes {
@@ -193,8 +213,10 @@ export interface FileRouteTypes {
     | '/admin/subjects'
     | '/app/$'
     | '/discipline/analytics'
+    | '/medical/$studentId'
     | '/teach/$csId'
     | '/discipline/'
+    | '/medical/'
     | '/teach/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -211,8 +233,10 @@ export interface FileRouteTypes {
     | '/admin/subjects'
     | '/app/$'
     | '/discipline/analytics'
+    | '/medical/$studentId'
     | '/teach/$csId'
     | '/discipline'
+    | '/medical'
     | '/teach'
   id:
     | '__root__'
@@ -230,8 +254,10 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/subjects'
     | '/_authenticated/app/$'
     | '/_authenticated/discipline/analytics'
+    | '/_authenticated/medical/$studentId'
     | '/_authenticated/teach/$csId'
     | '/_authenticated/discipline/'
+    | '/_authenticated/medical/'
     | '/_authenticated/teach/'
   fileRoutesById: FileRoutesById
 }
@@ -348,6 +374,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDisciplineAnalyticsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/medical/': {
+      id: '/_authenticated/medical/'
+      path: '/medical'
+      fullPath: '/medical/'
+      preLoaderRoute: typeof AuthenticatedMedicalIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/medical/$studentId': {
+      id: '/_authenticated/medical/$studentId'
+      path: '/medical/$studentId'
+      fullPath: '/medical/$studentId'
+      preLoaderRoute: typeof AuthenticatedMedicalStudentIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/teach/': {
       id: '/_authenticated/teach/'
       path: '/teach'
@@ -377,8 +417,10 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminSubjectsRoute: typeof AuthenticatedAdminSubjectsRoute
   AuthenticatedAppSplatRoute: typeof AuthenticatedAppSplatRoute
   AuthenticatedDisciplineAnalyticsRoute: typeof AuthenticatedDisciplineAnalyticsRoute
+  AuthenticatedMedicalStudentIdRoute: typeof AuthenticatedMedicalStudentIdRoute
   AuthenticatedTeachCsIdRoute: typeof AuthenticatedTeachCsIdRoute
   AuthenticatedDisciplineIndexRoute: typeof AuthenticatedDisciplineIndexRoute
+  AuthenticatedMedicalIndexRoute: typeof AuthenticatedMedicalIndexRoute
   AuthenticatedTeachIndexRoute: typeof AuthenticatedTeachIndexRoute
 }
 
@@ -394,8 +436,10 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminSubjectsRoute: AuthenticatedAdminSubjectsRoute,
   AuthenticatedAppSplatRoute: AuthenticatedAppSplatRoute,
   AuthenticatedDisciplineAnalyticsRoute: AuthenticatedDisciplineAnalyticsRoute,
+  AuthenticatedMedicalStudentIdRoute: AuthenticatedMedicalStudentIdRoute,
   AuthenticatedTeachCsIdRoute: AuthenticatedTeachCsIdRoute,
   AuthenticatedDisciplineIndexRoute: AuthenticatedDisciplineIndexRoute,
+  AuthenticatedMedicalIndexRoute: AuthenticatedMedicalIndexRoute,
   AuthenticatedTeachIndexRoute: AuthenticatedTeachIndexRoute,
 }
 
