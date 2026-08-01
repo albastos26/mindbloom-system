@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedTranscriptsRouteImport } from './routes/_authenticated/transcripts'
 import { Route as AuthenticatedAdminAssignmentsRouteImport } from './routes/_authenticated/admin/assignments'
 import { Route as AuthenticatedAdminClassesRouteImport } from './routes/_authenticated/admin/classes'
 import { Route as AuthenticatedAdminParentsRouteImport } from './routes/_authenticated/admin/parents'
@@ -21,6 +22,8 @@ import { Route as AuthenticatedAdminStaffRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminStudentsRouteImport } from './routes/_authenticated/admin/students'
 import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authenticated/admin/subjects'
 import { Route as AuthenticatedAppSplatRouteImport } from './routes/_authenticated/app.$'
+import { Route as AuthenticatedDisciplineIndexRouteImport } from './routes/_authenticated/discipline/index'
+import { Route as AuthenticatedDisciplineAnalyticsRouteImport } from './routes/_authenticated/discipline/analytics'
 import { Route as AuthenticatedTeachIndexRouteImport } from './routes/_authenticated/teach/index'
 import { Route as AuthenticatedTeachCsIdRouteImport } from './routes/_authenticated/teach/$csId'
 
@@ -43,6 +46,12 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTranscriptsRoute =
+  AuthenticatedTranscriptsRouteImport.update({
+    id: '/transcripts',
+    path: '/transcripts',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAdminAssignmentsRoute =
   AuthenticatedAdminAssignmentsRouteImport.update({
     id: '/admin/assignments',
@@ -89,6 +98,18 @@ const AuthenticatedAppSplatRoute = AuthenticatedAppSplatRouteImport.update({
   path: '/app/$',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDisciplineIndexRoute =
+  AuthenticatedDisciplineIndexRouteImport.update({
+    id: '/discipline/',
+    path: '/discipline/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDisciplineAnalyticsRoute =
+  AuthenticatedDisciplineAnalyticsRouteImport.update({
+    id: '/discipline/analytics',
+    path: '/discipline/analytics',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedTeachIndexRoute = AuthenticatedTeachIndexRouteImport.update({
   id: '/teach/',
   path: '/teach/',
@@ -104,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/transcripts': typeof AuthenticatedTranscriptsRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/admin/classes': typeof AuthenticatedAdminClassesRoute
   '/admin/parents': typeof AuthenticatedAdminParentsRoute
@@ -112,13 +134,16 @@ export interface FileRoutesByFullPath {
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
+  '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
+  '/discipline/': typeof AuthenticatedDisciplineIndexRoute
   '/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/transcripts': typeof AuthenticatedTranscriptsRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/admin/classes': typeof AuthenticatedAdminClassesRoute
   '/admin/parents': typeof AuthenticatedAdminParentsRoute
@@ -127,7 +152,9 @@ export interface FileRoutesByTo {
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
+  '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
+  '/discipline': typeof AuthenticatedDisciplineIndexRoute
   '/teach': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesById {
@@ -136,6 +163,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/transcripts': typeof AuthenticatedTranscriptsRoute
   '/_authenticated/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
   '/_authenticated/admin/classes': typeof AuthenticatedAdminClassesRoute
   '/_authenticated/admin/parents': typeof AuthenticatedAdminParentsRoute
@@ -144,7 +172,9 @@ export interface FileRoutesById {
   '/_authenticated/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/_authenticated/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/_authenticated/app/$': typeof AuthenticatedAppSplatRoute
+  '/_authenticated/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
   '/_authenticated/teach/$csId': typeof AuthenticatedTeachCsIdRoute
+  '/_authenticated/discipline/': typeof AuthenticatedDisciplineIndexRoute
   '/_authenticated/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRouteTypes {
@@ -153,6 +183,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/transcripts'
     | '/admin/assignments'
     | '/admin/classes'
     | '/admin/parents'
@@ -161,13 +192,16 @@ export interface FileRouteTypes {
     | '/admin/students'
     | '/admin/subjects'
     | '/app/$'
+    | '/discipline/analytics'
     | '/teach/$csId'
+    | '/discipline/'
     | '/teach/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/transcripts'
     | '/admin/assignments'
     | '/admin/classes'
     | '/admin/parents'
@@ -176,7 +210,9 @@ export interface FileRouteTypes {
     | '/admin/students'
     | '/admin/subjects'
     | '/app/$'
+    | '/discipline/analytics'
     | '/teach/$csId'
+    | '/discipline'
     | '/teach'
   id:
     | '__root__'
@@ -184,6 +220,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/dashboard'
+    | '/_authenticated/transcripts'
     | '/_authenticated/admin/assignments'
     | '/_authenticated/admin/classes'
     | '/_authenticated/admin/parents'
@@ -192,7 +229,9 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/students'
     | '/_authenticated/admin/subjects'
     | '/_authenticated/app/$'
+    | '/_authenticated/discipline/analytics'
     | '/_authenticated/teach/$csId'
+    | '/_authenticated/discipline/'
     | '/_authenticated/teach/'
   fileRoutesById: FileRoutesById
 }
@@ -230,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transcripts': {
+      id: '/_authenticated/transcripts'
+      path: '/transcripts'
+      fullPath: '/transcripts'
+      preLoaderRoute: typeof AuthenticatedTranscriptsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/admin/assignments': {
@@ -288,6 +334,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppSplatRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/discipline/': {
+      id: '/_authenticated/discipline/'
+      path: '/discipline'
+      fullPath: '/discipline/'
+      preLoaderRoute: typeof AuthenticatedDisciplineIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/discipline/analytics': {
+      id: '/_authenticated/discipline/analytics'
+      path: '/discipline/analytics'
+      fullPath: '/discipline/analytics'
+      preLoaderRoute: typeof AuthenticatedDisciplineAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/teach/': {
       id: '/_authenticated/teach/'
       path: '/teach'
@@ -307,6 +367,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedTranscriptsRoute: typeof AuthenticatedTranscriptsRoute
   AuthenticatedAdminAssignmentsRoute: typeof AuthenticatedAdminAssignmentsRoute
   AuthenticatedAdminClassesRoute: typeof AuthenticatedAdminClassesRoute
   AuthenticatedAdminParentsRoute: typeof AuthenticatedAdminParentsRoute
@@ -315,12 +376,15 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminStudentsRoute: typeof AuthenticatedAdminStudentsRoute
   AuthenticatedAdminSubjectsRoute: typeof AuthenticatedAdminSubjectsRoute
   AuthenticatedAppSplatRoute: typeof AuthenticatedAppSplatRoute
+  AuthenticatedDisciplineAnalyticsRoute: typeof AuthenticatedDisciplineAnalyticsRoute
   AuthenticatedTeachCsIdRoute: typeof AuthenticatedTeachCsIdRoute
+  AuthenticatedDisciplineIndexRoute: typeof AuthenticatedDisciplineIndexRoute
   AuthenticatedTeachIndexRoute: typeof AuthenticatedTeachIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedTranscriptsRoute: AuthenticatedTranscriptsRoute,
   AuthenticatedAdminAssignmentsRoute: AuthenticatedAdminAssignmentsRoute,
   AuthenticatedAdminClassesRoute: AuthenticatedAdminClassesRoute,
   AuthenticatedAdminParentsRoute: AuthenticatedAdminParentsRoute,
@@ -329,7 +393,9 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminStudentsRoute: AuthenticatedAdminStudentsRoute,
   AuthenticatedAdminSubjectsRoute: AuthenticatedAdminSubjectsRoute,
   AuthenticatedAppSplatRoute: AuthenticatedAppSplatRoute,
+  AuthenticatedDisciplineAnalyticsRoute: AuthenticatedDisciplineAnalyticsRoute,
   AuthenticatedTeachCsIdRoute: AuthenticatedTeachCsIdRoute,
+  AuthenticatedDisciplineIndexRoute: AuthenticatedDisciplineIndexRoute,
   AuthenticatedTeachIndexRoute: AuthenticatedTeachIndexRoute,
 }
 
@@ -344,13 +410,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
