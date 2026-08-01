@@ -95,8 +95,8 @@ const adminNav: NavGroup[] = [
     label: "School life",
     items: [
       { title: "Attendance", to: "/app/attendance", icon: CalendarCheck },
-      { title: "Discipline", to: "/app/discipline", icon: ShieldAlert },
-      { title: "Infirmary", to: "/app/infirmary", icon: HeartPulse },
+      { title: "Discipline", to: "/discipline", icon: ShieldAlert },
+      { title: "Infirmary", to: "/medical", icon: HeartPulse },
       { title: "Finance", to: "/app/finance", icon: Wallet },
       { title: "Store", to: "/app/store", icon: Boxes },
       { title: "Announcements", to: "/app/announcements", icon: Megaphone },
@@ -112,11 +112,11 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "Discipline",
       items: [
-        { title: "Incidents", to: "/app/discipline", icon: ShieldAlert },
+        { title: "Incidents", to: "/discipline", icon: ShieldAlert },
         { title: "Sanctions", to: "/app/sanctions", icon: ClipboardList },
         { title: "Attendance issues", to: "/app/attendance-issues", icon: CalendarCheck },
         { title: "Students", to: "/app/discipline-students", icon: GraduationCap },
-        { title: "Reports", to: "/app/discipline-reports", icon: FileBarChart },
+        { title: "Reports", to: "/discipline/analytics", icon: FileBarChart },
       ],
     },
   ],
@@ -125,8 +125,8 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "Infirmary",
       items: [
-        { title: "Medical visits", to: "/app/infirmary", icon: HeartPulse },
-        { title: "New visit", to: "/app/infirmary-new", icon: Activity },
+        { title: "Medical visits", to: "/medical", icon: HeartPulse },
+        { title: "New visit", to: "/medical", icon: Activity },
         { title: "Student health files", to: "/app/health-files", icon: GraduationCap },
         { title: "Reports", to: "/app/health-reports", icon: FileBarChart },
       ],
@@ -140,6 +140,7 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
         { title: "My classes", to: "/teach", icon: Library },
         { title: "Attendance", to: "/teach", icon: CalendarCheck },
         { title: "Evaluations & grades", to: "/teach", icon: ClipboardList },
+        { title: "Transcripts", to: "/transcripts", icon: FileBarChart },
       ],
     },
     {
