@@ -160,7 +160,10 @@ function DisciplinePage() {
             className="grid gap-4 md:grid-cols-4"
             onSubmit={(e) => {
               e.preventDefault();
-              if (!form.student_id) return toast.error("Pick a student");
+              if (!form.student_id) {
+                toast.error("Pick a student");
+                return;
+              }
               save.mutate();
             }}
           >
