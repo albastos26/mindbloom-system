@@ -22,6 +22,7 @@ import { Route as AuthenticatedAdminStudentsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authenticated/admin/subjects'
 import { Route as AuthenticatedAppSplatRouteImport } from './routes/_authenticated/app.$'
 import { Route as AuthenticatedTeachIndexRouteImport } from './routes/_authenticated/teach/index'
+import { Route as AuthenticatedTeachCsIdRouteImport } from './routes/_authenticated/teach/$csId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -93,6 +94,11 @@ const AuthenticatedTeachIndexRoute = AuthenticatedTeachIndexRouteImport.update({
   path: '/teach/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTeachCsIdRoute = AuthenticatedTeachCsIdRouteImport.update({
+  id: '/teach/$csId',
+  path: '/teach/$csId',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
+  '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesByTo {
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
+  '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/teach': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesById {
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/students': typeof AuthenticatedAdminStudentsRoute
   '/_authenticated/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/_authenticated/app/$': typeof AuthenticatedAppSplatRoute
+  '/_authenticated/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/_authenticated/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRouteTypes {
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/admin/students'
     | '/admin/subjects'
     | '/app/$'
+    | '/teach/$csId'
     | '/teach/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/admin/students'
     | '/admin/subjects'
     | '/app/$'
+    | '/teach/$csId'
     | '/teach'
   id:
     | '__root__'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/students'
     | '/_authenticated/admin/subjects'
     | '/_authenticated/app/$'
+    | '/_authenticated/teach/$csId'
     | '/_authenticated/teach/'
   fileRoutesById: FileRoutesById
 }
@@ -283,6 +295,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTeachIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/teach/$csId': {
+      id: '/_authenticated/teach/$csId'
+      path: '/teach/$csId'
+      fullPath: '/teach/$csId'
+      preLoaderRoute: typeof AuthenticatedTeachCsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -296,6 +315,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminStudentsRoute: typeof AuthenticatedAdminStudentsRoute
   AuthenticatedAdminSubjectsRoute: typeof AuthenticatedAdminSubjectsRoute
   AuthenticatedAppSplatRoute: typeof AuthenticatedAppSplatRoute
+  AuthenticatedTeachCsIdRoute: typeof AuthenticatedTeachCsIdRoute
   AuthenticatedTeachIndexRoute: typeof AuthenticatedTeachIndexRoute
 }
 
@@ -309,6 +329,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminStudentsRoute: AuthenticatedAdminStudentsRoute,
   AuthenticatedAdminSubjectsRoute: AuthenticatedAdminSubjectsRoute,
   AuthenticatedAppSplatRoute: AuthenticatedAppSplatRoute,
+  AuthenticatedTeachCsIdRoute: AuthenticatedTeachCsIdRoute,
   AuthenticatedTeachIndexRoute: AuthenticatedTeachIndexRoute,
 }
 
