@@ -24,8 +24,15 @@ import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAppSplatRouteImport } from './routes/_authenticated/app.$'
 import { Route as AuthenticatedDisciplineIndexRouteImport } from './routes/_authenticated/discipline/index'
 import { Route as AuthenticatedDisciplineAnalyticsRouteImport } from './routes/_authenticated/discipline/analytics'
+import { Route as AuthenticatedFinanceIndexRouteImport } from './routes/_authenticated/finance/index'
+import { Route as AuthenticatedFinanceExpensesRouteImport } from './routes/_authenticated/finance/expenses'
+import { Route as AuthenticatedFinanceReportsRouteImport } from './routes/_authenticated/finance/reports'
+import { Route as AuthenticatedFinanceStructuresRouteImport } from './routes/_authenticated/finance/structures'
 import { Route as AuthenticatedMedicalIndexRouteImport } from './routes/_authenticated/medical/index'
 import { Route as AuthenticatedMedicalStudentIdRouteImport } from './routes/_authenticated/medical/$studentId'
+import { Route as AuthenticatedStoreIndexRouteImport } from './routes/_authenticated/store/index'
+import { Route as AuthenticatedStoreMovementsRouteImport } from './routes/_authenticated/store/movements'
+import { Route as AuthenticatedStoreReportsRouteImport } from './routes/_authenticated/store/reports'
 import { Route as AuthenticatedTeachIndexRouteImport } from './routes/_authenticated/teach/index'
 import { Route as AuthenticatedTeachCsIdRouteImport } from './routes/_authenticated/teach/$csId'
 
@@ -112,6 +119,30 @@ const AuthenticatedDisciplineAnalyticsRoute =
     path: '/discipline/analytics',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedFinanceIndexRoute =
+  AuthenticatedFinanceIndexRouteImport.update({
+    id: '/finance/',
+    path: '/finance/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFinanceExpensesRoute =
+  AuthenticatedFinanceExpensesRouteImport.update({
+    id: '/finance/expenses',
+    path: '/finance/expenses',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFinanceReportsRoute =
+  AuthenticatedFinanceReportsRouteImport.update({
+    id: '/finance/reports',
+    path: '/finance/reports',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFinanceStructuresRoute =
+  AuthenticatedFinanceStructuresRouteImport.update({
+    id: '/finance/structures',
+    path: '/finance/structures',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedMedicalIndexRoute =
   AuthenticatedMedicalIndexRouteImport.update({
     id: '/medical/',
@@ -122,6 +153,23 @@ const AuthenticatedMedicalStudentIdRoute =
   AuthenticatedMedicalStudentIdRouteImport.update({
     id: '/medical/$studentId',
     path: '/medical/$studentId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStoreIndexRoute = AuthenticatedStoreIndexRouteImport.update({
+  id: '/store/',
+  path: '/store/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedStoreMovementsRoute =
+  AuthenticatedStoreMovementsRouteImport.update({
+    id: '/store/movements',
+    path: '/store/movements',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStoreReportsRoute =
+  AuthenticatedStoreReportsRouteImport.update({
+    id: '/store/reports',
+    path: '/store/reports',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedTeachIndexRoute = AuthenticatedTeachIndexRouteImport.update({
@@ -149,10 +197,17 @@ export interface FileRoutesByFullPath {
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
   '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/finance/expenses': typeof AuthenticatedFinanceExpensesRoute
+  '/finance/reports': typeof AuthenticatedFinanceReportsRoute
+  '/finance/structures': typeof AuthenticatedFinanceStructuresRoute
   '/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
+  '/store/movements': typeof AuthenticatedStoreMovementsRoute
+  '/store/reports': typeof AuthenticatedStoreReportsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/finance/': typeof AuthenticatedFinanceIndexRoute
   '/medical/': typeof AuthenticatedMedicalIndexRoute
+  '/store/': typeof AuthenticatedStoreIndexRoute
   '/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesByTo {
@@ -169,10 +224,17 @@ export interface FileRoutesByTo {
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/app/$': typeof AuthenticatedAppSplatRoute
   '/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/finance/expenses': typeof AuthenticatedFinanceExpensesRoute
+  '/finance/reports': typeof AuthenticatedFinanceReportsRoute
+  '/finance/structures': typeof AuthenticatedFinanceStructuresRoute
   '/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
+  '/store/movements': typeof AuthenticatedStoreMovementsRoute
+  '/store/reports': typeof AuthenticatedStoreReportsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline': typeof AuthenticatedDisciplineIndexRoute
+  '/finance': typeof AuthenticatedFinanceIndexRoute
   '/medical': typeof AuthenticatedMedicalIndexRoute
+  '/store': typeof AuthenticatedStoreIndexRoute
   '/teach': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRoutesById {
@@ -191,10 +253,17 @@ export interface FileRoutesById {
   '/_authenticated/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/_authenticated/app/$': typeof AuthenticatedAppSplatRoute
   '/_authenticated/discipline/analytics': typeof AuthenticatedDisciplineAnalyticsRoute
+  '/_authenticated/finance/expenses': typeof AuthenticatedFinanceExpensesRoute
+  '/_authenticated/finance/reports': typeof AuthenticatedFinanceReportsRoute
+  '/_authenticated/finance/structures': typeof AuthenticatedFinanceStructuresRoute
   '/_authenticated/medical/$studentId': typeof AuthenticatedMedicalStudentIdRoute
+  '/_authenticated/store/movements': typeof AuthenticatedStoreMovementsRoute
+  '/_authenticated/store/reports': typeof AuthenticatedStoreReportsRoute
   '/_authenticated/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/_authenticated/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/_authenticated/finance/': typeof AuthenticatedFinanceIndexRoute
   '/_authenticated/medical/': typeof AuthenticatedMedicalIndexRoute
+  '/_authenticated/store/': typeof AuthenticatedStoreIndexRoute
   '/_authenticated/teach/': typeof AuthenticatedTeachIndexRoute
 }
 export interface FileRouteTypes {
@@ -213,10 +282,17 @@ export interface FileRouteTypes {
     | '/admin/subjects'
     | '/app/$'
     | '/discipline/analytics'
+    | '/finance/expenses'
+    | '/finance/reports'
+    | '/finance/structures'
     | '/medical/$studentId'
+    | '/store/movements'
+    | '/store/reports'
     | '/teach/$csId'
     | '/discipline/'
+    | '/finance/'
     | '/medical/'
+    | '/store/'
     | '/teach/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -233,10 +309,17 @@ export interface FileRouteTypes {
     | '/admin/subjects'
     | '/app/$'
     | '/discipline/analytics'
+    | '/finance/expenses'
+    | '/finance/reports'
+    | '/finance/structures'
     | '/medical/$studentId'
+    | '/store/movements'
+    | '/store/reports'
     | '/teach/$csId'
     | '/discipline'
+    | '/finance'
     | '/medical'
+    | '/store'
     | '/teach'
   id:
     | '__root__'
@@ -254,10 +337,17 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/subjects'
     | '/_authenticated/app/$'
     | '/_authenticated/discipline/analytics'
+    | '/_authenticated/finance/expenses'
+    | '/_authenticated/finance/reports'
+    | '/_authenticated/finance/structures'
     | '/_authenticated/medical/$studentId'
+    | '/_authenticated/store/movements'
+    | '/_authenticated/store/reports'
     | '/_authenticated/teach/$csId'
     | '/_authenticated/discipline/'
+    | '/_authenticated/finance/'
     | '/_authenticated/medical/'
+    | '/_authenticated/store/'
     | '/_authenticated/teach/'
   fileRoutesById: FileRoutesById
 }
@@ -374,6 +464,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDisciplineAnalyticsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/finance/': {
+      id: '/_authenticated/finance/'
+      path: '/finance'
+      fullPath: '/finance/'
+      preLoaderRoute: typeof AuthenticatedFinanceIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/finance/expenses': {
+      id: '/_authenticated/finance/expenses'
+      path: '/finance/expenses'
+      fullPath: '/finance/expenses'
+      preLoaderRoute: typeof AuthenticatedFinanceExpensesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/finance/reports': {
+      id: '/_authenticated/finance/reports'
+      path: '/finance/reports'
+      fullPath: '/finance/reports'
+      preLoaderRoute: typeof AuthenticatedFinanceReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/finance/structures': {
+      id: '/_authenticated/finance/structures'
+      path: '/finance/structures'
+      fullPath: '/finance/structures'
+      preLoaderRoute: typeof AuthenticatedFinanceStructuresRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/medical/': {
       id: '/_authenticated/medical/'
       path: '/medical'
@@ -386,6 +504,27 @@ declare module '@tanstack/react-router' {
       path: '/medical/$studentId'
       fullPath: '/medical/$studentId'
       preLoaderRoute: typeof AuthenticatedMedicalStudentIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/store/': {
+      id: '/_authenticated/store/'
+      path: '/store'
+      fullPath: '/store/'
+      preLoaderRoute: typeof AuthenticatedStoreIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/store/movements': {
+      id: '/_authenticated/store/movements'
+      path: '/store/movements'
+      fullPath: '/store/movements'
+      preLoaderRoute: typeof AuthenticatedStoreMovementsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/store/reports': {
+      id: '/_authenticated/store/reports'
+      path: '/store/reports'
+      fullPath: '/store/reports'
+      preLoaderRoute: typeof AuthenticatedStoreReportsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/teach/': {
@@ -417,10 +556,17 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminSubjectsRoute: typeof AuthenticatedAdminSubjectsRoute
   AuthenticatedAppSplatRoute: typeof AuthenticatedAppSplatRoute
   AuthenticatedDisciplineAnalyticsRoute: typeof AuthenticatedDisciplineAnalyticsRoute
+  AuthenticatedFinanceExpensesRoute: typeof AuthenticatedFinanceExpensesRoute
+  AuthenticatedFinanceReportsRoute: typeof AuthenticatedFinanceReportsRoute
+  AuthenticatedFinanceStructuresRoute: typeof AuthenticatedFinanceStructuresRoute
   AuthenticatedMedicalStudentIdRoute: typeof AuthenticatedMedicalStudentIdRoute
+  AuthenticatedStoreMovementsRoute: typeof AuthenticatedStoreMovementsRoute
+  AuthenticatedStoreReportsRoute: typeof AuthenticatedStoreReportsRoute
   AuthenticatedTeachCsIdRoute: typeof AuthenticatedTeachCsIdRoute
   AuthenticatedDisciplineIndexRoute: typeof AuthenticatedDisciplineIndexRoute
+  AuthenticatedFinanceIndexRoute: typeof AuthenticatedFinanceIndexRoute
   AuthenticatedMedicalIndexRoute: typeof AuthenticatedMedicalIndexRoute
+  AuthenticatedStoreIndexRoute: typeof AuthenticatedStoreIndexRoute
   AuthenticatedTeachIndexRoute: typeof AuthenticatedTeachIndexRoute
 }
 
@@ -436,10 +582,17 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminSubjectsRoute: AuthenticatedAdminSubjectsRoute,
   AuthenticatedAppSplatRoute: AuthenticatedAppSplatRoute,
   AuthenticatedDisciplineAnalyticsRoute: AuthenticatedDisciplineAnalyticsRoute,
+  AuthenticatedFinanceExpensesRoute: AuthenticatedFinanceExpensesRoute,
+  AuthenticatedFinanceReportsRoute: AuthenticatedFinanceReportsRoute,
+  AuthenticatedFinanceStructuresRoute: AuthenticatedFinanceStructuresRoute,
   AuthenticatedMedicalStudentIdRoute: AuthenticatedMedicalStudentIdRoute,
+  AuthenticatedStoreMovementsRoute: AuthenticatedStoreMovementsRoute,
+  AuthenticatedStoreReportsRoute: AuthenticatedStoreReportsRoute,
   AuthenticatedTeachCsIdRoute: AuthenticatedTeachCsIdRoute,
   AuthenticatedDisciplineIndexRoute: AuthenticatedDisciplineIndexRoute,
+  AuthenticatedFinanceIndexRoute: AuthenticatedFinanceIndexRoute,
   AuthenticatedMedicalIndexRoute: AuthenticatedMedicalIndexRoute,
+  AuthenticatedStoreIndexRoute: AuthenticatedStoreIndexRoute,
   AuthenticatedTeachIndexRoute: AuthenticatedTeachIndexRoute,
 }
 
@@ -454,13 +607,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
