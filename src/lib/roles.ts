@@ -81,6 +81,7 @@ const adminNav: NavGroup[] = [
       { title: "Subjects", to: "/admin/subjects", icon: BookOpen },
       { title: "Teacher assignments", to: "/admin/assignments", icon: ClipboardList },
       { title: "Reports", to: "/admin/reports", icon: FileBarChart },
+      { title: "Command centre", to: "/command-center", icon: Activity },
     ],
   },
   {
@@ -97,8 +98,8 @@ const adminNav: NavGroup[] = [
       { title: "Attendance", to: "/app/attendance", icon: CalendarCheck },
       { title: "Discipline", to: "/discipline", icon: ShieldAlert },
       { title: "Infirmary", to: "/medical", icon: HeartPulse },
-      { title: "Finance", to: "/app/finance", icon: Wallet },
-      { title: "Store", to: "/app/store", icon: Boxes },
+      { title: "Finance", to: "/finance", icon: Wallet },
+      { title: "Store", to: "/store", icon: Boxes },
       { title: "Announcements", to: "/app/announcements", icon: Megaphone },
     ],
   },
@@ -113,9 +114,9 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
       label: "Discipline",
       items: [
         { title: "Incidents", to: "/discipline", icon: ShieldAlert },
-        { title: "Sanctions", to: "/app/sanctions", icon: ClipboardList },
-        { title: "Attendance issues", to: "/app/attendance-issues", icon: CalendarCheck },
-        { title: "Students", to: "/app/discipline-students", icon: GraduationCap },
+        { title: "Sanctions", to: "/discipline", icon: ClipboardList },
+        { title: "Attendance issues", to: "/discipline/analytics", icon: CalendarCheck },
+        { title: "Students", to: "/discipline", icon: GraduationCap },
         { title: "Reports", to: "/discipline/analytics", icon: FileBarChart },
       ],
     },
@@ -127,8 +128,8 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
       items: [
         { title: "Medical visits", to: "/medical", icon: HeartPulse },
         { title: "New visit", to: "/medical", icon: Activity },
-        { title: "Student health files", to: "/app/health-files", icon: GraduationCap },
-        { title: "Reports", to: "/app/health-reports", icon: FileBarChart },
+        { title: "Student health files", to: "/medical", icon: GraduationCap },
+        { title: "Reports", to: "/medical", icon: FileBarChart },
       ],
     },
   ],
@@ -156,10 +157,10 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "Finance",
       items: [
-        { title: "Fee structures", to: "/app/fee-structures", icon: BadgeDollarSign },
-        { title: "Payments", to: "/app/payments", icon: Receipt },
-        { title: "Expenses", to: "/app/expenses", icon: Wallet },
-        { title: "Financial reports", to: "/app/finance-reports", icon: FileBarChart },
+        { title: "Fee structures", to: "/finance/structures", icon: BadgeDollarSign },
+        { title: "Payments", to: "/finance", icon: Receipt },
+        { title: "Expenses", to: "/finance/expenses", icon: Wallet },
+        { title: "Financial reports", to: "/finance/reports", icon: FileBarChart },
       ],
     },
   ],
@@ -168,10 +169,10 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "Store",
       items: [
-        { title: "Stock items", to: "/app/store", icon: Package },
-        { title: "Stock movements", to: "/app/stock-movements", icon: Boxes },
-        { title: "Low stock alerts", to: "/app/low-stock", icon: ShieldAlert },
-        { title: "Reports", to: "/app/store-reports", icon: FileBarChart },
+        { title: "Stock items", to: "/store", icon: Package },
+        { title: "Stock movements", to: "/store/movements", icon: Boxes },
+        { title: "Low stock alerts", to: "/store/reports", icon: ShieldAlert },
+        { title: "Reports", to: "/store/reports", icon: FileBarChart },
       ],
     },
   ],
@@ -180,10 +181,10 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "My children",
       items: [
-        { title: "Results", to: "/app/child-results", icon: ClipboardList },
-        { title: "Attendance", to: "/app/child-attendance", icon: CalendarCheck },
-        { title: "Discipline", to: "/app/child-discipline", icon: ShieldAlert },
-        { title: "Fees", to: "/app/child-fees", icon: Wallet },
+        { title: "Results", to: "/family", icon: ClipboardList },
+        { title: "Attendance", to: "/family", icon: CalendarCheck },
+        { title: "Discipline", to: "/family", icon: ShieldAlert },
+        { title: "Fees", to: "/family", icon: Wallet },
         { title: "Messages", to: "/app/messages", icon: Megaphone },
       ],
     },
@@ -193,8 +194,8 @@ export const ROLE_NAV: Record<AppRole, NavGroup[]> = {
     {
       label: "My school",
       items: [
-        { title: "My results", to: "/app/my-results", icon: ClipboardList },
-        { title: "My attendance", to: "/app/my-attendance", icon: CalendarCheck },
+        { title: "My results", to: "/me", icon: ClipboardList },
+        { title: "My attendance", to: "/me", icon: CalendarCheck },
         { title: "Timetable", to: "/app/timetable", icon: CalendarCheck },
         { title: "Announcements", to: "/app/announcements", icon: Megaphone },
       ],

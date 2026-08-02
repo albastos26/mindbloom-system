@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedCommandCenterRouteImport } from './routes/_authenticated/command-center'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedTranscriptsRouteImport } from './routes/_authenticated/transcripts'
 import { Route as AuthenticatedAdminAssignmentsRouteImport } from './routes/_authenticated/admin/assignments'
@@ -24,10 +25,12 @@ import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authen
 import { Route as AuthenticatedAppSplatRouteImport } from './routes/_authenticated/app.$'
 import { Route as AuthenticatedDisciplineIndexRouteImport } from './routes/_authenticated/discipline/index'
 import { Route as AuthenticatedDisciplineAnalyticsRouteImport } from './routes/_authenticated/discipline/analytics'
+import { Route as AuthenticatedFamilyIndexRouteImport } from './routes/_authenticated/family/index'
 import { Route as AuthenticatedFinanceIndexRouteImport } from './routes/_authenticated/finance/index'
 import { Route as AuthenticatedFinanceExpensesRouteImport } from './routes/_authenticated/finance/expenses'
 import { Route as AuthenticatedFinanceReportsRouteImport } from './routes/_authenticated/finance/reports'
 import { Route as AuthenticatedFinanceStructuresRouteImport } from './routes/_authenticated/finance/structures'
+import { Route as AuthenticatedMeIndexRouteImport } from './routes/_authenticated/me/index'
 import { Route as AuthenticatedMedicalIndexRouteImport } from './routes/_authenticated/medical/index'
 import { Route as AuthenticatedMedicalStudentIdRouteImport } from './routes/_authenticated/medical/$studentId'
 import { Route as AuthenticatedStoreIndexRouteImport } from './routes/_authenticated/store/index'
@@ -50,6 +53,12 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedCommandCenterRoute =
+  AuthenticatedCommandCenterRouteImport.update({
+    id: '/command-center',
+    path: '/command-center',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -119,6 +128,12 @@ const AuthenticatedDisciplineAnalyticsRoute =
     path: '/discipline/analytics',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedFamilyIndexRoute =
+  AuthenticatedFamilyIndexRouteImport.update({
+    id: '/family/',
+    path: '/family/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedFinanceIndexRoute =
   AuthenticatedFinanceIndexRouteImport.update({
     id: '/finance/',
@@ -143,6 +158,11 @@ const AuthenticatedFinanceStructuresRoute =
     path: '/finance/structures',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedMeIndexRoute = AuthenticatedMeIndexRouteImport.update({
+  id: '/me/',
+  path: '/me/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedMedicalIndexRoute =
   AuthenticatedMedicalIndexRouteImport.update({
     id: '/medical/',
@@ -186,6 +206,7 @@ const AuthenticatedTeachCsIdRoute = AuthenticatedTeachCsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/command-center': typeof AuthenticatedCommandCenterRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/transcripts': typeof AuthenticatedTranscriptsRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -205,7 +226,9 @@ export interface FileRoutesByFullPath {
   '/store/reports': typeof AuthenticatedStoreReportsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/family/': typeof AuthenticatedFamilyIndexRoute
   '/finance/': typeof AuthenticatedFinanceIndexRoute
+  '/me/': typeof AuthenticatedMeIndexRoute
   '/medical/': typeof AuthenticatedMedicalIndexRoute
   '/store/': typeof AuthenticatedStoreIndexRoute
   '/teach/': typeof AuthenticatedTeachIndexRoute
@@ -213,6 +236,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/command-center': typeof AuthenticatedCommandCenterRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/transcripts': typeof AuthenticatedTranscriptsRoute
   '/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -232,7 +256,9 @@ export interface FileRoutesByTo {
   '/store/reports': typeof AuthenticatedStoreReportsRoute
   '/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/discipline': typeof AuthenticatedDisciplineIndexRoute
+  '/family': typeof AuthenticatedFamilyIndexRoute
   '/finance': typeof AuthenticatedFinanceIndexRoute
+  '/me': typeof AuthenticatedMeIndexRoute
   '/medical': typeof AuthenticatedMedicalIndexRoute
   '/store': typeof AuthenticatedStoreIndexRoute
   '/teach': typeof AuthenticatedTeachIndexRoute
@@ -242,6 +268,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/command-center': typeof AuthenticatedCommandCenterRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/transcripts': typeof AuthenticatedTranscriptsRoute
   '/_authenticated/admin/assignments': typeof AuthenticatedAdminAssignmentsRoute
@@ -261,7 +288,9 @@ export interface FileRoutesById {
   '/_authenticated/store/reports': typeof AuthenticatedStoreReportsRoute
   '/_authenticated/teach/$csId': typeof AuthenticatedTeachCsIdRoute
   '/_authenticated/discipline/': typeof AuthenticatedDisciplineIndexRoute
+  '/_authenticated/family/': typeof AuthenticatedFamilyIndexRoute
   '/_authenticated/finance/': typeof AuthenticatedFinanceIndexRoute
+  '/_authenticated/me/': typeof AuthenticatedMeIndexRoute
   '/_authenticated/medical/': typeof AuthenticatedMedicalIndexRoute
   '/_authenticated/store/': typeof AuthenticatedStoreIndexRoute
   '/_authenticated/teach/': typeof AuthenticatedTeachIndexRoute
@@ -271,6 +300,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/command-center'
     | '/dashboard'
     | '/transcripts'
     | '/admin/assignments'
@@ -290,7 +320,9 @@ export interface FileRouteTypes {
     | '/store/reports'
     | '/teach/$csId'
     | '/discipline/'
+    | '/family/'
     | '/finance/'
+    | '/me/'
     | '/medical/'
     | '/store/'
     | '/teach/'
@@ -298,6 +330,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/command-center'
     | '/dashboard'
     | '/transcripts'
     | '/admin/assignments'
@@ -317,7 +350,9 @@ export interface FileRouteTypes {
     | '/store/reports'
     | '/teach/$csId'
     | '/discipline'
+    | '/family'
     | '/finance'
+    | '/me'
     | '/medical'
     | '/store'
     | '/teach'
@@ -326,6 +361,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/command-center'
     | '/_authenticated/dashboard'
     | '/_authenticated/transcripts'
     | '/_authenticated/admin/assignments'
@@ -345,7 +381,9 @@ export interface FileRouteTypes {
     | '/_authenticated/store/reports'
     | '/_authenticated/teach/$csId'
     | '/_authenticated/discipline/'
+    | '/_authenticated/family/'
     | '/_authenticated/finance/'
+    | '/_authenticated/me/'
     | '/_authenticated/medical/'
     | '/_authenticated/store/'
     | '/_authenticated/teach/'
@@ -379,6 +417,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/command-center': {
+      id: '/_authenticated/command-center'
+      path: '/command-center'
+      fullPath: '/command-center'
+      preLoaderRoute: typeof AuthenticatedCommandCenterRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
@@ -464,6 +509,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDisciplineAnalyticsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/family/': {
+      id: '/_authenticated/family/'
+      path: '/family'
+      fullPath: '/family/'
+      preLoaderRoute: typeof AuthenticatedFamilyIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/finance/': {
       id: '/_authenticated/finance/'
       path: '/finance'
@@ -490,6 +542,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/structures'
       fullPath: '/finance/structures'
       preLoaderRoute: typeof AuthenticatedFinanceStructuresRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/me/': {
+      id: '/_authenticated/me/'
+      path: '/me'
+      fullPath: '/me/'
+      preLoaderRoute: typeof AuthenticatedMeIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/medical/': {
@@ -545,6 +604,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCommandCenterRoute: typeof AuthenticatedCommandCenterRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedTranscriptsRoute: typeof AuthenticatedTranscriptsRoute
   AuthenticatedAdminAssignmentsRoute: typeof AuthenticatedAdminAssignmentsRoute
@@ -564,13 +624,16 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedStoreReportsRoute: typeof AuthenticatedStoreReportsRoute
   AuthenticatedTeachCsIdRoute: typeof AuthenticatedTeachCsIdRoute
   AuthenticatedDisciplineIndexRoute: typeof AuthenticatedDisciplineIndexRoute
+  AuthenticatedFamilyIndexRoute: typeof AuthenticatedFamilyIndexRoute
   AuthenticatedFinanceIndexRoute: typeof AuthenticatedFinanceIndexRoute
+  AuthenticatedMeIndexRoute: typeof AuthenticatedMeIndexRoute
   AuthenticatedMedicalIndexRoute: typeof AuthenticatedMedicalIndexRoute
   AuthenticatedStoreIndexRoute: typeof AuthenticatedStoreIndexRoute
   AuthenticatedTeachIndexRoute: typeof AuthenticatedTeachIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCommandCenterRoute: AuthenticatedCommandCenterRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedTranscriptsRoute: AuthenticatedTranscriptsRoute,
   AuthenticatedAdminAssignmentsRoute: AuthenticatedAdminAssignmentsRoute,
@@ -590,7 +653,9 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedStoreReportsRoute: AuthenticatedStoreReportsRoute,
   AuthenticatedTeachCsIdRoute: AuthenticatedTeachCsIdRoute,
   AuthenticatedDisciplineIndexRoute: AuthenticatedDisciplineIndexRoute,
+  AuthenticatedFamilyIndexRoute: AuthenticatedFamilyIndexRoute,
   AuthenticatedFinanceIndexRoute: AuthenticatedFinanceIndexRoute,
+  AuthenticatedMeIndexRoute: AuthenticatedMeIndexRoute,
   AuthenticatedMedicalIndexRoute: AuthenticatedMedicalIndexRoute,
   AuthenticatedStoreIndexRoute: AuthenticatedStoreIndexRoute,
   AuthenticatedTeachIndexRoute: AuthenticatedTeachIndexRoute,
